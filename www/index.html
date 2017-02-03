@@ -12,8 +12,16 @@
     </script>
 </head>
 <body>
-    <div class="site">
-	<iframe src="http://www.cyber-wave.jp/" seamless></iframe>
-    </div>
+    <ul id="list"></ul>
+
+    <script>
+    $.getJSON("http://www.cyber-wave.jp/?json=get_recent_posts", function(data) {
+      for(var i=0; i<10; i++){
+        $("#list").append(
+            "<li>" + data.posts[i].title + "</li>"        
+        );
+      }
+    });
+    </script>
 </body>
 </html>
