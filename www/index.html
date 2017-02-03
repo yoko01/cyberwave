@@ -8,16 +8,28 @@
     <script src="components/monaca-onsenui/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
-<script>
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        alert("onDeviceReady");
-    }
-</script>
 </head>
 <body>
     <div class="site">
-	<iframe src="http://www.cyber-wave.jp/" seamless></iframe>
+	<iframe src="http://www.cyber-wave.jp/" seamless>
+     
+     <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        monaca.cloud.Push.setHandler(function(data) {
+            alert(“Cordovaプラグインの処理を記述します。”);
+        });
+    }
+</script>
+
+<script>
+    ons.ready(function() {
+        monaca.cloud.Push.setHandler(function(data) {
+            alert(“Onsen UIの処理を記述します。”);
+        });
+    });
+</script>   
+    </iframe>
     </div>
 </body>
 </html>
